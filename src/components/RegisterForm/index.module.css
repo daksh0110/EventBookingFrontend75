@@ -1,0 +1,54 @@
+/* Example of styling for the login and register pages */
+.logincontainer {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .loginform {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  label {
+    display: inline-block;
+    width: 100px; /* Adjust width to match the input */
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  input {
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    width: calc(100% - 120px); /* Adjust width to make space for the label */
+  }
+  
+  button {
+    padding: 10px;
+    background-color: #27ae60;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+  }
+  
+  button:hover {
+    background-color: #2ecc71;
+  }
+  
+  .error {
+    color: red;
+    font-size: 0.9rem;
+  }
+  
+  .registerlink {
+    margin-top: 10px;
+    text-align: center;
+  }
+  

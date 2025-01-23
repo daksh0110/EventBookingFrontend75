@@ -1,0 +1,89 @@
+/* Header container */
+.header {
+  
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background-color: #007bff; /* Primary color */
+    color: #ffffff;
+  }
+  
+  /* Left side: Title */
+  .headerleft {
+    flex: 1;
+    display: flex;
+    align-items: left;
+  }
+  
+  .headertitle {
+    margin: 0;
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  /* Right side: Navigation */
+  .headerright {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+  }
+  
+  .headerlink {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: bold;
+  }
+  
+  .headerbutton {
+    background-color: #ffffff;
+    color: #007bff;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 12px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  /* Hover effects */
+  .headerlink:hover {
+    text-decoration: underline;
+  }
+  
+  .headerbutton:hover {
+    background-color: #0056b3;
+    color: #ffffff;
+  }
+  
+  .userButton:hover {
+    background-color: #555;
+  }
+  
+  /* Dropdown Menu */
+  .dropdownMenu {
+    position: absolute;
+    top: 40px;
+    right: 0;
+    background-color: #444;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    z-index: 100;
+  }
+  
+  .logoutButton {
+    background-color: #d9534f;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+  }
+  
+  .logoutButton:hover {
+    background-color: #c9302c;
+  }

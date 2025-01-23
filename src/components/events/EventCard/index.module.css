@@ -1,0 +1,59 @@
+/* EventCard.css */
+.card {
+    display: flex; /* Ensure the layout is a flexbox */
+    flex-direction: row; /* Ensure the layout is in a row */
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: 100%; /* Use full width of parent container */
+    max-width: 600px; /* Set a max-width for the card */
+    margin: 20px;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .cardimage {
+    width: 40%; /* Adjust width for image */
+    height: auto; /* Ensure the image maintains its aspect ratio */
+    object-fit: cover;
+  }
+  
+  .cardcontent {
+    padding: 15px;
+    width: 60%; /* Adjust width for content */
+    display: flex;
+    flex-direction: column; /* Stack content vertically */
+    justify-content: space-between;
+  }
+  
+  .cardtitle {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #333;
+    margin: 0 0 10px 0;
+  }
+  
+  .carddate {
+    font-size: 1rem;
+    color: #777;
+    margin: 0 0 10px 0;
+  }
+  
+  .cardprice {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #27ae60;
+  }
+  
+  .cardfooter {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    color: #555;
+  }
+  

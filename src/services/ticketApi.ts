@@ -1,0 +1,38 @@
+
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+
+interface Ticket {
+    id:string,
+    eventId:string,
+    userId:string,
+    seatNumber:string,
+    price:number,
+    status:string,
+    createdAt:string,
+    updatedAt:string,
+}
+
+interface TicketResponse {
+    data:Ticket,
+    message:string
+}
+export const ticketApi = createApi({
+    reducerPath: 'ticketApi',
+    baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:5001/api/' }),
+    endpoints: (builder) => ({
+        createTicket: builder.mutation<TicketResponse, { id: string; seatNumber: number; email: string }>({
+            query: ({ id, seatNumber, email }) => {
+                const token = localStorage.getItem('accessToken'); // Get the token from local storage
+                return {
+                    url: `events/book-event/${id}`,
+                    method: 'POST',
+                    body: { seatNumber, email },
+                    headers: {
+                        Authorization: `Bearer ${token}`, // Set the Authorization header
+                    },
+                };
+            },
+        }),
+    }),
+});
+export const { useCreateTicketMutation } = ticketApi;

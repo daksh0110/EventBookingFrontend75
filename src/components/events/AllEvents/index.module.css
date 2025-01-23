@@ -1,0 +1,24 @@
+/* Container for All Events */
+.eventcardContainer {
+    display: flex;
+    flex-wrap: wrap; /* Allow the cards to wrap to the next line */
+    justify-content: space-between; /* Distribute the cards evenly */
+    gap: 20px; /* Add space between the cards */
+    padding: 20px;
+  }
+  
+  /* Individual Event Card */
+  .eventcard {
+    flex: 1 1 300px; /* Allow the cards to grow and shrink, with a base width of 300px */
+    max-width: 350px; /* Set a max-width for the cards */
+    margin: 10px;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .eventcard:hover {
+    transform: translateY(-5px); /* Add hover effect */
+  }
+  h1 {
+    text-align: center;
+    margin: 20px 0; /* Optional: Add margin for spacing */
+  }

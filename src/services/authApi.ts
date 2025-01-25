@@ -18,11 +18,23 @@ interface RegisterCredentials {
   password: string;
   name: string;
 }
+interface RefreshTokenResponse {
+  accessToken: string;
+  refreshToken: string;
+}
 
 // Create the API slice
 export const authApi = createApi({
   reducerPath: 'authApi',
-  baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:5001/api/' }),
+  baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:5001/api/',prepareHeaders:(headers,{endpoint})=>{
+    if (endpoint !== 'refreshToken') {
+      const token = localStorage.getItem('accessToken');
+      if (token) {
+        headers.set('authorization', `Bearer ${token}`);
+      }
+    }
+    return headers;
+  } }),
   endpoints: (builder) => ({
     // Login mutation
     login: builder.mutation<AuthResponse, LoginCredentials>({
@@ -40,8 +52,19 @@ export const authApi = createApi({
         body: credentials,
       }),
     }),
+    refreshToken: builder.mutation<RefreshTokenResponse, void>({
+      query: () => {
+        const token = localStorage.getItem('refreshToken')?.toString();
+        console.log("Refresh token being sent:", token);
+        return {
+          url: 'users/refresh-token',
+          method: 'POST',
+          body: { refreshToken: token },
+        };
+      },
+    }),
   }),
 });
 
 // Export hooks for using the mutations in components
-export const { useLoginMutation, useRegisterMutation } = authApi;
+export const { useLoginMutation, useRegisterMutation ,useRefreshTokenMutation } = authApi;

@@ -1,13 +1,18 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useFetchEventByIdQuery } from "../../../services/eventApi";
 import styles from "./index.module.css";
 import { toast ,ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { decodeToken } from "../../../services/jwtService";
+
 import { useCreateTicketMutation } from "../../../services/ticketApi";
+
+import { useRefreshTokenMutation } from "../../../services/authApi";
+import { use } from "framer-motion/client";
 const EventDetails = () => {
+    const navigate = useNavigate();
     const { id } = useParams();
     const [createTicket] = useCreateTicketMutation();
+    const [refreshToken] = useRefreshTokenMutation();
     if (!id) {
         return <h1>Event not found</h1>;
     }
@@ -19,33 +24,38 @@ const EventDetails = () => {
     }
     console.log(eventData);
    
-   
-    
+
     const handleBooking = async (seatNumber: string) => {
-        const token = localStorage.getItem('accessToken'); // Assuming you store the token in localStorage
-        const decoded = token ? decodeToken(token) : null;
+      
+      
+        // try {
+        //   const result = await createTicket({
+        //     id: id,
+        //     seatNumber: seatNumber.toString(),
         
-        if (!decoded || !decoded.email) {
-            alert("User  email not found. Please log in.");
-            return;
-        }
-    
-        try {
+        //   }).unwrap();
           
-            const result = await createTicket({ id: id,seatNumber: seatNumber.toString(), email: decoded.email }).unwrap();
-            
-            // Notify the user of the successful booking
-            toast.success(`Successfully booked seat number `);
-            setTimeout(() => {
-                window.location.reload(); 
-            }, 2000); 
-        } catch (error) {
-            console.error("Error booking seat:", error);
-            toast.error("Error booking seat. Please try again.");
-        }
-    
-        console.log(`Booking seat with number ${seatNumber}`);
-    };
+        //   toast.success(`Successfully booked seat number ${seatNumber}`);
+        //   setTimeout(() => {
+        //     window.location.reload();
+        //   }, 2000);
+
+        // } catch (error: any) {
+        //     if (error?.data.message === "Invalid token") {
+        //         try{
+        //             const response = useRefreshTokenMutation();
+        //             console.log(response);
+
+        //         }catch(error){
+        //             console.log(error);
+        //         }
+
+        //     }
+        //     toast.error(error?.data.message);
+        // }
+        const response = await refreshToken();
+        console.log(response);
+    }
     return (
         <div className={styles.eventDetails}>
             <h1 className={styles.eventName}>{eventData.data.name}</h1>

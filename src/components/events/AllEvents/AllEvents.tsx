@@ -4,6 +4,7 @@ import EventCard from '../EventCard/EventCard';
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 import { useFetchEventsQuery } from "../../../services/eventApi";
 import { useNavigate } from 'react-router-dom';
+import LazyLoad from 'react-lazy-load';
 const AllEvents = () => {
   const { data: events, error, isLoading } = useFetchEventsQuery();
   const navigate = useNavigate();
@@ -37,11 +38,16 @@ const AllEvents = () => {
      
        {!isLoading && events?.data.length > 0 && (
          <div className={styles.eventcardContainer}>
-           {events?.data.map((event) => (
-             <div className={styles.eventcard} key={event._id}onClick={() => handleEventClick(event._id)}>
-               <EventCard event={event} />
-             </div>
-           ))}
+            {events?.data?.map((event) => (
+            <LazyLoad key={event._id} height={200} offset={100}>
+              <div
+                className={styles.eventcard}
+                onClick={() => handleEventClick(event._id)}
+              >
+                <EventCard event={event} />
+              </div>
+            </LazyLoad>
+          ))}
          </div>
        )}
 

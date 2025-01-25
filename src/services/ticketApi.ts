@@ -20,13 +20,13 @@ export const ticketApi = createApi({
     reducerPath: 'ticketApi',
     baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:5001/api/' }),
     endpoints: (builder) => ({
-        createTicket: builder.mutation<TicketResponse, { id: string; seatNumber: number; email: string }>({
-            query: ({ id, seatNumber, email }) => {
+        createTicket: builder.mutation<TicketResponse, { id: string; seatNumber: string }>({
+            query: ({ id, seatNumber }) => {
                 const token = localStorage.getItem('accessToken'); // Get the token from local storage
                 return {
                     url: `events/book-event/${id}`,
                     method: 'POST',
-                    body: { seatNumber, email },
+                    body: { seatNumber },
                     headers: {
                         Authorization: `Bearer ${token}`, // Set the Authorization header
                     },

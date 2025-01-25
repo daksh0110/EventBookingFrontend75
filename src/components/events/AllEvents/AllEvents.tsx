@@ -1,7 +1,7 @@
 import styles from "./index.module.css";
 
 import EventCard from '../EventCard/EventCard';
-import Skeleton from 'react-loading-skeleton';
+import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 import { useFetchEventsQuery } from "../../../services/eventApi";
 import { useNavigate } from 'react-router-dom';
 const AllEvents = () => {
@@ -10,32 +10,40 @@ const AllEvents = () => {
   const handleEventClick = (id: string) => {
     navigate(`/events/${id}`); // Navigate to the event page with the event's id
   };
+  if(!events){
+    return <div>loading...</div>
+  }
+
   return (
     <>
       <h1>All Events</h1>
       
    
-      {isLoading && (
-        <div>
+      {!isLoading && (
+        <div className={styles.eventcardContainer}  >
           {[...Array(4)].map((_, index) => (
             <div key={index} style={{ marginBottom: '20px' }}>
-              <Skeleton height={200} width={300} />
-              <Skeleton count={2} style={{ marginTop: '10px' }} />
+                <SkeletonTheme baseColor="#202020" highlightColor="#444">
+    <p>
+      <Skeleton count={3} width={500} />
+    </p>
+  </SkeletonTheme>
             </div>
+
           ))}
         </div>
       )}
 
      
-      {!isLoading && events?.data?.length > 0 && (
-        <div className={styles.eventcardContainer}>
-          {events?.data.map((event) => (
-            <div className={styles.eventcard} key={event._id}onClick={() => handleEventClick(event._id)}>
-              <EventCard event={event} />
-            </div>
-          ))}
-        </div>
-      )}
+       {!isLoading && events?.data.length > 0 && (
+         <div className={styles.eventcardContainer}>
+           {events?.data.map((event) => (
+             <div className={styles.eventcard} key={event._id}onClick={() => handleEventClick(event._id)}>
+               <EventCard event={event} />
+             </div>
+           ))}
+         </div>
+       )}
 
       {/* Optionally, handle case where no events are available */}
       {!isLoading && events?.data?.length === 0 && (

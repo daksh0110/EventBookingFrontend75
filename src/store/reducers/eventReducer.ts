@@ -2,19 +2,22 @@ import { createSlice } from '@reduxjs/toolkit';
 import { eventApi } from '../../services/eventApi';
 
 
-interface EventState {
-  events: Event[];
+export interface Response {
+  data: Event[];
   loading: boolean;
   error: string | null;
 }
 
-const initialState: EventState = {
-  events: [],
+
+
+
+const initialState: Response = {
+ data: [],
   loading: false,
   error: null,
 };
 export interface Event {
-  id: string;
+  _id: string;
   name: string;
   description: string;
   date: string;
@@ -24,7 +27,7 @@ export interface Event {
   seats: Seat[];
 }
 export interface Seat {
-  id: string;
+  _id: string;
   name: string;
   price: number;
   booked: boolean;
@@ -41,7 +44,7 @@ const eventSlice = createSlice({
       })
       .addMatcher(eventApi.endpoints.fetchEvents.matchFulfilled, (state, action) => {
         state.loading = false;
-        state.events = action.payload; // Directly assigning the array of events
+        state.data = action.payload.data; // Directly assigning the array of events
       })
       .addMatcher(eventApi.endpoints.fetchEvents.matchRejected, (state, action) => {
         state.loading = false;

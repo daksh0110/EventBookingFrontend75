@@ -6,7 +6,10 @@ import RegisterAuth from './Pages/RegisterAuth';
 import ErrorBoundary from './components/ErrorBoundary';
 import EventDetailsPage from './Pages/EventDetailsPage';
 import TicketPage from './Pages/TicketPage';
-
+import "./i18n"
+import LanguageSwitcher from './utils/i18next.changeLanguage.tsx';
+import ProfilePage from './Pages/ProfilePage';
+import './i18n.ts'
 
 
 function App() {
@@ -14,12 +17,15 @@ function App() {
 
   return (
     <>
- <Router>
+
+    <Router>
   <ErrorBoundary >
+  
   <Routes>
-       
+    
 
        <Route path="/" element={<Homepage />} />
+                <Route path="/profile" element={<ProfilePage />} />
                <Route path="/events" element={<Listevents />} />
                <Route path="/auth/login" element={<LoginAuth/>} />
                <Route path="/auth/register" element={<RegisterAuth />} />
@@ -29,6 +35,8 @@ function App() {
   </ErrorBoundary>
      
     </Router>
+
+ 
     </>
   )
 }

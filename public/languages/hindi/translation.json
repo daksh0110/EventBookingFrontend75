@@ -1,0 +1,29 @@
+{
+    "All-Events": "सभी कार्यक्रम",
+    "Starting-Price": "प्रारंभिक मूल्य",
+    "Login": "लॉगिन",
+    "Email": "ईमेल",
+    "Password": "पासवर्ड",
+    "Register": "पंजीकरण करें",
+    "name": "नाम",
+    "message": {
+        "Not-have-account": "क्या आपके पास खाता नहीं है?",
+        "toastSuccess": "लॉगिन सफल!",
+        "toastError": "अमान्य ईमेल या पासवर्ड!",
+        "EventNotFound": "कार्यक्रम नहीं मिला!"
+    },
+    "Event-Details": {
+        "description": "विवरण",
+        "date": "तारीख",
+        "Location": "स्थान",
+        "Available-Seats": "उपलब्ध सीटें",
+        "Book-Now": "अभी बुक करें",
+        "toastSuccess": "कार्यक्रम सफलतापूर्वक बुक किया गया!",
+        "toastError": "कार्यक्रम पहले से बुक है!"
+    },
+    "error": {
+        "refreshTokenExpired": "सत्र समाप्त हो गया। कृपया फिर से लॉग इन करें।",
+        "invalidRefreshToken": "टोकन को ताज़ा करने के दौरान एक अप्रत्याशित त्रुटि हुई।",
+        "else": "एक अप्रत्याशित त्रुटि हुई। कृपया बाद में पुनः प्रयास करें।"
+    }
+}

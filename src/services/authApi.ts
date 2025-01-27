@@ -2,8 +2,16 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 // Define the structure of the login response
 interface AuthResponse {
-  accessToken: string;
-  refreshToken: string;
+  data:{
+    accessToken: string;
+    refreshToken: string;
+    user: {
+      id: string;
+      name: string;
+      email: string;
+    };
+  }
+  
 }
 
 // Define the structure for login credentials

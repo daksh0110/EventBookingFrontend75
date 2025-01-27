@@ -8,15 +8,13 @@ export interface Response {
   error: string | null;
 }
 
-
-
-
 const initialState: Response = {
- data: [],
+ data: [] ,
   loading: false,
   error: null,
 };
 export interface Event {
+  
   _id: string;
   name: string;
   description: string;
@@ -27,7 +25,7 @@ export interface Event {
   seats: Seat[];
 }
 export interface Seat {
-  _id: string;
+
   name: string;
   price: number;
   booked: boolean;

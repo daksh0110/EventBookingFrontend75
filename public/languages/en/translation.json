@@ -1,0 +1,32 @@
+{
+
+    "All-Events": "All Events",
+    "Starting-Price": "Starting Price",
+    "Login": "Login",
+    "Email": "Email",
+    "Password": "Password",
+    "Register": "Register",
+    "name": "Name",
+    "message":{
+        "Not-have-account": "Don't have an account?",
+        "toastSuccess": "Login successful!",
+        "toastError": "Invalid email or password!",
+        "EventNotFound": "Event not found!"
+    },
+    "Event-Details":{
+        "description": "Description",
+        "date": "Date",
+        "Location": "Location",
+        "Available-Seats": "Available Seats",
+        "Book-Now": "Book Now",
+        "toastSuccess": "Event booked successfully!",
+        "toastError": "Event already booked!"
+
+    },
+    "error":{
+        "refreshTokenExpired":"Session expired. Please log in again.",
+        "invalidRefreshToken":"An unexpected error occurred while refreshing the token.",
+        "else":"An unexpected error occurred. Please try again later."
+    }
+    
+}

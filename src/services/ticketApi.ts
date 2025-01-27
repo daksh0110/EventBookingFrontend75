@@ -14,7 +14,7 @@ interface Ticket {
 
 interface TicketResponse {
     data:Ticket,
-    message:string
+    success:boolean,
 }
 export const ticketApi = createApi({
     reducerPath: 'ticketApi',
